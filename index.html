@@ -16,7 +16,7 @@
  		font-size: 20px;
     font-weight: lighter;
     text-align: center;
-  	padding-block: 20px;
+ 	 		padding-block: 20px;
   	padding-left: 20px;
     padding-right: 20px;
     width: 405px;
@@ -24,16 +24,47 @@
     top: 150px; left: 150px;
   }
   
-  img{
+  .me img{
     width: 20%;
+    z-index: 1;
+  }
+  
+  .rug img{
+    position: absolute;
   }
 
 </style>
 
 <body>
+  <div class="rug">
+  <img src="rug 2.jpeg" alt="rug">
+  </div>
+  
+  <div class="me">
+    <img src="me.png" alt="picture of darien">
+  </div>
 
-<img src="me.png"alt="picture of darien">
+  <script>
+  const cd = document.querySelector('[alt="picture of darien"]')
+  cd.style.position = 'relative'
 
+  function animate() {
+    requestAnimationFrame(animate)
+    const time = Date.now()
+    const radius = window.innerWidth * 0.40
+    const scale = -0.001
+    const offset = {
+      x: window.innerWidth * 0.5,
+      y: window.innerHeight * 0.5
+    }
+    const x = Math.sin(time * scale) * radius + offset.x
+    const y = Math.cos(time * scale) * radius + offset.y
+    cd.style.left = `${x}px`
+    cd.style.top = `${y}px`
+  }
+
+  window.addEventListener('load', animate)
+</script>
   
 <h1>Welcome Home</h1>
 <h2>My name is Darien Ridenour. I sit somewhere at the intersection
